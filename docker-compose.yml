@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: openlog_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=openlog
+    ports:
+      - "3306:3306"
+
+  springboot:
+    build: .
+    container_name: openlog_be
+    depends_on:
+      - mysql
+    restart: on-failure
+    ports:
+      - "8080:8080"
