@@ -1,0 +1,29 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	<changeSet author="Cadeddu Danilo" id="20220626811-tables">
+		<sql>
+			DROP TABLE IF EXISTS `user`;
+			CREATE TABLE `user`(
+			`id` int(11) NOT NULL AUTO_INCREMENT,
+			`username` varchar(255) NOT NULL,
+			`password` varchar(255) NOT NULL,
+			`fullname` varchar(255),
+			`enabled` bit(1) NOT NULL,
+			PRIMARY KEY (`id`)
+			);
+
+			DROP TABLE IF EXISTS `project`;
+			CREATE TABLE `project`(
+			`id` int(11) NOT NULL AUTO_INCREMENT,
+			`name` varchar(255) NOT NULL,
+			`description` varchar(255),
+			PRIMARY KEY (`id`)
+			);
+		</sql>
+		<rollback>
+		</rollback>
+	</changeSet>
+</databaseChangeLog>
