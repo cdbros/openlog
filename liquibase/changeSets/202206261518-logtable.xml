@@ -1,0 +1,26 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	<changeSet author="Cadeddu Danilo" id="202206261518-logtable">
+		<sql>
+			DROP TABLE IF EXISTS `log`;
+			CREATE TABLE `log`(
+			`id` int(11) NOT NULL AUTO_INCREMENT,
+			`project_id` int(11) NOT NULL,
+			`hostname` varchar(255),
+			`date` timestamp,
+			`severity` varchar(255),
+			`code` varchar(255),
+			`action` varchar(255),
+			`message` longtext,
+			PRIMARY KEY (`id`),
+			FOREIGN KEY (project_id) REFERENCES project(id)
+			);
+		</sql>
+		<rollback>
+			DROP TABLE IF EXISTS `log`;
+		</rollback>
+	</changeSet>
+</databaseChangeLog>

@@ -5,4 +5,5 @@
 	objectQuotingStrategy="QUOTE_ALL_OBJECTS">
 	
 	<include file='changeSets/20220626811-tables.xml' relativeToChangelogFile='true' />
+	<include file='changeSets/202206261518-logtable.xml' relativeToChangelogFile='true' />
 </databaseChangeLog>
