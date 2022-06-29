@@ -4,11 +4,7 @@ COPY . .
 RUN mvn clean install -DskipTests
 COPY ./target/*.jar openlog.jar
 
-FROM alpine:3.16 AS java
+FROM openjdk:11.0.11-jre-slim
 
-RUN  apk update \
-  && apk upgrade \
-  && apk add --update openjdk11 \
-  && rm -rf /var/cache/apk/*
 COPY --from=maven openlog.jar .
 ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=docker", "openlog.jar"]
