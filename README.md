@@ -6,9 +6,8 @@ Openlog is an opensource project for monitoring your software.
 
 ### Prerequisites
 - jdk11
+- docker (optional)
 
-### Optional prerequisites
-- docker
 
 First you need a working MySQL instance. 
 The project is docker based, so just run the ***/script/db/create-local-db.sh*** and ***/script/db/update-db.sh***
