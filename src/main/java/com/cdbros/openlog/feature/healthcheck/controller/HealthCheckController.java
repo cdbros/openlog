@@ -1,4 +1,4 @@
-package com.cdbros.openlog.healthcheck.controller;
+package com.cdbros.openlog.feature.healthcheck.controller;
 
 import com.cdbros.openlog.exception.GenericServerException;
 import org.springframework.web.bind.annotation.GetMapping;

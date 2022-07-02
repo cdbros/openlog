@@ -1,27 +1,22 @@
-package com.cdbros.openlog.healthcheck.controller;
+package com.cdbros.openlog.feature.healthcheck.controller;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(HealthCheckController.class)
 class HealthCheckControllerTest {
 
     @Autowired
-    private HealthCheckController healthCheckController;
     private MockMvc mvc;
-
-    @BeforeEach
-    void setup() {
-        mvc = MockMvcBuilders.standaloneSetup(healthCheckController).build();
-    }
 
     @Test
     void shouldHealthCheckOk() throws Exception {

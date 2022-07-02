@@ -1,0 +1,5 @@
+projectId,hostname,date,severity,code,action,message
+1,java_machine,2022-06-30_17:00:00,ERROR,250,api_call,test long description test test tes
+1,java_machine,2022-06-30_16:00:00,WARNING,,api_call,api_failed
+1,java_machine,2022-06-30_12:00:00,ERROR,22,api_call,api_failed
+1,java_machine,2022-06-30_13:00:00,INFO,43,api_call,api_failed
