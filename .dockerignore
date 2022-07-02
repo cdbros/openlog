@@ -1,0 +1,12 @@
+HELP.md
+README.md
+
+mvnw
+mvnw.cmd
+doc/
+liquibase/
+script/
+
+.git
+.gitignore
+.idea
