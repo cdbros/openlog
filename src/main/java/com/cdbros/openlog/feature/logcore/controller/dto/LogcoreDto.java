@@ -1,15 +1,20 @@
 package com.cdbros.openlog.feature.logcore.controller.dto;
 
 import com.opencsv.bean.CsvBindByName;
-import lombok.AccessLevel;
-import lombok.Data;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import javax.validation.constraints.NotNull;
+
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LogcoreCsvBean {
+public class LogcoreDto {
 
     @CsvBindByName
+    @NotNull(message = "Project id cannot be null")
     Long projectId;
 
     @CsvBindByName

@@ -1,7 +1,7 @@
 package com.cdbros.openlog.feature.logcore.service;
 
 import com.cdbros.openlog.exception.LogcoreException;
-import com.cdbros.openlog.feature.logcore.controller.dto.LogcoreCsvBean;
+import com.cdbros.openlog.feature.logcore.controller.dto.LogcoreDto;
 import com.cdbros.openlog.feature.logcore.repository.LogcoreRepository;
 import com.cdbros.openlog.feature.logcore.service.mapper.LogcoreMapper;
 import com.cdbros.openlog.model.LogcoreEntity;
@@ -31,8 +31,8 @@ public class LogcoreService {
 
     public void uploadCsvLogFile(MultipartFile logFile) {
         try (Reader reader = new BufferedReader(new InputStreamReader(logFile.getInputStream()))) {
-            CsvToBean<LogcoreCsvBean> csvToBean = new CsvToBeanBuilder<LogcoreCsvBean>(reader)
-                    .withType(LogcoreCsvBean.class)
+            CsvToBean<LogcoreDto> csvToBean = new CsvToBeanBuilder<LogcoreDto>(reader)
+                    .withType(LogcoreDto.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
 
@@ -45,6 +45,18 @@ public class LogcoreService {
         }
         catch (Exception e) {
             throw new LogcoreException("Error reading csv file");
+        }
+    }
+
+    public void saveLogLines(List<LogcoreDto> logcoreDtos) {
+        try {
+            List<LogcoreEntity> logsEntities = logcoreDtos.stream()
+                    .map(LogcoreMapper::toEntity)
+                    .collect(Collectors.toList());
+            logcoreRepository.saveAll(logsEntities);
+        }
+        catch (Exception e) {
+            throw new LogcoreException("Error saving log lines");
         }
     }
 }
