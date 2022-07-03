@@ -40,3 +40,7 @@ If you want to contribute just open a pull request to the maintainers.
 
 ## Maintainers
 - Danilo Cadeddu (danilo_cadeddu@outlook.it)
+
+## Major dependencies
+- Liquibase
+- Lombok
