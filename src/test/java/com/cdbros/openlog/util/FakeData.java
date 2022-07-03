@@ -1,6 +1,8 @@
 package com.cdbros.openlog.util;
 
 import com.cdbros.openlog.feature.logcore.controller.dto.LogcoreDto;
+import com.cdbros.openlog.feature.project.controller.dto.ProjectDto;
+import com.cdbros.openlog.model.ProjectEntity;
 import org.apache.commons.io.IOUtils;
 import org.springframework.mock.web.MockMultipartFile;
 
@@ -62,6 +64,46 @@ public class FakeData {
                 .build());
 
         return logcoreDtos;
+    }
+
+    public static List<ProjectDto> aValidProjectDtoList() {
+        List<ProjectDto> projectDtoList = new ArrayList<>();
+        projectDtoList.add(ProjectDto.builder()
+                .id(1L)
+                .name("test1")
+                .description("test desc1")
+                .build());
+        projectDtoList.add(ProjectDto.builder()
+                .id(2L)
+                .name("test2")
+                .description("test desc2")
+                .build());
+
+        return projectDtoList;
+    }
+
+    public static ProjectDto aValidProjectDto() {
+        return ProjectDto.builder()
+                .id(1L)
+                .name("test1")
+                .description("test desc1")
+                .build();
+    }
+
+    public static ProjectDto aNotValidProjectDto() {
+        return ProjectDto.builder()
+                .id(1L)
+                .name("")
+                .description("test desc1")
+                .build();
+    }
+
+    public static ProjectEntity aValidProjectEntity() {
+        return ProjectEntity.builder()
+                .id(1L)
+                .name("test1")
+                .description("test desc1")
+                .build();
     }
 
 }

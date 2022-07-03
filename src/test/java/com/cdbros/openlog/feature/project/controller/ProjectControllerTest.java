@@ -1,8 +1,8 @@
 package com.cdbros.openlog.feature.project.controller;
 
 import com.cdbros.openlog.exception.ProjectException;
-import com.cdbros.openlog.feature.project.controller.dto.ProjectDto;
 import com.cdbros.openlog.feature.project.service.ProjectService;
+import com.cdbros.openlog.util.FakeData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,9 +13,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -38,19 +35,9 @@ class ProjectControllerTest {
 
     @Test
     void shouldGetAllProjects() throws Exception {
-        List<ProjectDto> projectDtoList = new ArrayList<>();
-        projectDtoList.add(ProjectDto.builder()
-                .id(1L)
-                .name("test1")
-                .description("test desc1")
-                .build());
-        projectDtoList.add(ProjectDto.builder()
-                .id(2L)
-                .name("test2")
-                .description("test desc2")
-                .build());
+        var projectDtos = FakeData.aValidProjectDtoList();
 
-        Mockito.when(projectService.getAllProjects()).thenReturn(projectDtoList);
+        Mockito.when(projectService.getAllProjects()).thenReturn(projectDtos);
 
         mvc.perform(get("/openlog/api/v1/project")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -65,11 +52,7 @@ class ProjectControllerTest {
 
     @Test
     void shouldPostProject() throws Exception {
-        var project = ProjectDto.builder()
-                .id(1L)
-                .name("test1")
-                .description("test desc1")
-                .build();
+        var project = FakeData.aValidProjectDto();
 
         Mockito.when(projectService.postProject(project)).thenReturn(project);
 
@@ -84,11 +67,7 @@ class ProjectControllerTest {
 
     @Test
     void shouldNotPostProject_withBadRequest() throws Exception {
-        var project = ProjectDto.builder()
-                .id(1L)
-                .name("")
-                .description("test desc1")
-                .build();
+        var project = FakeData.aNotValidProjectDto();
 
         Mockito.when(projectService.postProject(project)).thenReturn(project);
 
@@ -100,11 +79,7 @@ class ProjectControllerTest {
 
     @Test
     void shouldNotPostProject_withProjectException() throws Exception {
-        var project = ProjectDto.builder()
-                .id(1L)
-                .name("test")
-                .description("test desc1")
-                .build();
+        var project = FakeData.aValidProjectDto();
 
         Mockito.when(projectService.postProject(project)).thenThrow(ProjectException.class);
 

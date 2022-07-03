@@ -3,7 +3,7 @@ package com.cdbros.openlog.feature.project.service;
 import com.cdbros.openlog.exception.ProjectException;
 import com.cdbros.openlog.feature.project.controller.dto.ProjectDto;
 import com.cdbros.openlog.feature.project.repository.ProjectRepository;
-import com.cdbros.openlog.model.ProjectEntity;
+import com.cdbros.openlog.util.FakeData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,16 +32,8 @@ class ProjectServiceTest {
 
     @Test
     void shouldPostProject() {
-        var project = ProjectDto.builder()
-                .id(1L)
-                .name("test1")
-                .description("test desc1")
-                .build();
-        var projectEntity = ProjectEntity.builder()
-                .id(1L)
-                .name("test1")
-                .description("test desc1")
-                .build();
+        var project = FakeData.aValidProjectDto();
+        var projectEntity = FakeData.aValidProjectEntity();
 
         Mockito.when(projectRepository.save(projectEntity)).thenReturn(projectEntity);
         ProjectDto savedProject = projectService.postProject(project);
@@ -51,16 +43,8 @@ class ProjectServiceTest {
 
     @Test
     void shouldNotPostProject() {
-        var project = ProjectDto.builder()
-                .id(1L)
-                .name("test1")
-                .description("test desc1")
-                .build();
-        var projectEntity = ProjectEntity.builder()
-                .id(1L)
-                .name("test1")
-                .description("test desc1")
-                .build();
+        var project = FakeData.aValidProjectDto();
+        var projectEntity = FakeData.aValidProjectEntity();
 
         Mockito.when(projectRepository.save(projectEntity)).thenThrow(ProjectException.class);
 
