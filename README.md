@@ -1,5 +1,4 @@
 # OpenLog SpringBoot service
-
 Openlog is an opensource project for monitoring your software.
 
 ## How to run
@@ -29,13 +28,19 @@ need to create a docker network with your MySQL container and the SpringBoot one
 The project contains also a ***docker-compose.yml*** file if you want to create and run both containers.
 
 ## Contributing
-
 If you want to contribute just open a pull request to the maintainers.
+
+### Sonar
+This project integrates [SonarCloud](https://sonarcloud.io/) for static code quality analysis.
+All checks are automatic on the CI workflow.
+
+Analysis reports are public accessible at https://sonarcloud.io/project/overview?id=cdbros_openlog
+
 
 ### Guidelines
 - Follow the feature pattern for package creation.
 - Write unit tests for all code written.
-- Validate the code quality of your code with tools like Sonarlint
+- Before commits, validate the code quality of your code with tools like Sonarlint
 - Avoid useless comments, let your code speak for you.
 
 ## Maintainers
