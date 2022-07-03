@@ -49,11 +49,4 @@ jobs:
           java-version: 11.0.4
 
       - name: Maven Tests
-
-        env:
-          MYSQL_HOST: localhost
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: openlog
-          MYSQL_PORT: 3306
-
         run: mvn compile test
