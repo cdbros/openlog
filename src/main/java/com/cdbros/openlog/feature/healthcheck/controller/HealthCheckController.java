@@ -10,6 +10,7 @@ public class HealthCheckController {
 
     @GetMapping("/openlog/api/v1/healthcheck")
     void healthCheckOk() {
+        // healthcheck
     }
 
     @PostMapping("/openlog/api/v1/healthcheck")
