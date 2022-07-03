@@ -46,6 +46,6 @@ Analysis reports are public accessible at https://sonarcloud.io/project/overview
 ## Maintainers
 - Danilo Cadeddu (danilo_cadeddu@outlook.it)
 
-## Major dependencies
-- Liquibase
-- Lombok
+## External Libraries
+- [Liquibase](https://www.liquibase.org/)
+- [Lombok](https://projectlombok.org/)
