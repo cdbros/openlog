@@ -48,11 +48,12 @@ jobs:
         with:
           java-version: 11.0.4
 
-      - run: sed -i "s/localhost:3306/mysql:3306/g" src/test/resources/application.properties
-
       - name: Maven Tests
-        run: mvn compile test
+
         env:
-          MYSQL_HOST: mysql
+          MYSQL_HOST: localhost
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: openlog
+          MYSQL_PORT: 3306
+
+        run: mvn compile test
