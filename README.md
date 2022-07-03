@@ -1,5 +1,9 @@
 # OpenLog SpringBoot service
+
+![log - Copia](https://user-images.githubusercontent.com/67358859/177053130-0b5a8448-8908-4bc5-aebb-21815540be79.jpg)
+
 Openlog is an opensource project for monitoring your software.
+
 
 ## How to run
 
