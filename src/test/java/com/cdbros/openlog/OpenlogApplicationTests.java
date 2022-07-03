@@ -12,4 +12,10 @@ class OpenlogApplicationTests {
         Assertions.assertTrue(true);
     }
 
+    @Test
+    void shouldExecuteMainAndReturn() {
+        OpenlogApplication.main(new String[]{});
+        Assertions.assertTrue(true);
+    }
+
 }
