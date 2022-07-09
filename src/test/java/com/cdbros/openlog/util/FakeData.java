@@ -1,7 +1,10 @@
 package com.cdbros.openlog.util;
 
 import com.cdbros.openlog.feature.logcore.controller.dto.LogcoreDto;
+import com.cdbros.openlog.feature.logcore.controller.dto.PaginatedLogDto;
+import com.cdbros.openlog.feature.logcore.controller.dto.PaginatedLogRequest;
 import com.cdbros.openlog.feature.project.controller.dto.ProjectDto;
+import com.cdbros.openlog.model.LogcoreEntity;
 import com.cdbros.openlog.model.ProjectEntity;
 import org.apache.commons.io.IOUtils;
 import org.springframework.mock.web.MockMultipartFile;
@@ -38,12 +41,12 @@ public class FakeData {
         List<LogcoreDto> logcoreDtos = new ArrayList<>();
         logcoreDtos.add(LogcoreDto.builder()
                 .projectId(1L)
-                .date("2022-06-30_17:00:00")
+                .date("2022-06-30 17:00:00")
                 .severity("ERROR")
                 .build());
         logcoreDtos.add(LogcoreDto.builder()
                 .projectId(1L)
-                .date("2022-06-29_17:00:00")
+                .date("2022-06-29 17:00:00")
                 .severity("ERROR")
                 .build());
 
@@ -54,16 +57,42 @@ public class FakeData {
         List<LogcoreDto> logcoreDtos = new ArrayList<>();
         logcoreDtos.add(LogcoreDto.builder()
                 .projectId(1L)
-                .date("2022-06-30_17:00:00")
+                .date("2022-06-30 17:00:00")
                 .severity("ERROR")
                 .build());
         logcoreDtos.add(LogcoreDto.builder()
                 .projectId(null)
-                .date("2022-06-29_17:00:00")
+                .date("2022-06-29 17:00:00")
                 .severity("ERROR")
                 .build());
 
         return logcoreDtos;
+    }
+
+    public static List<LogcoreEntity> aValidLogcoreEntityList() {
+        List<LogcoreEntity> logcoreEntities = new ArrayList<>();
+        logcoreEntities.add(LogcoreEntity.builder()
+                .projectId(1L)
+                .date(Utils.getTimestampFromString("2022-06-30 17:00:00.0"))
+                .severity("ERROR")
+                .build());
+        logcoreEntities.add(LogcoreEntity.builder()
+                .projectId(1L)
+                .date(Utils.getTimestampFromString("2022-06-29 17:00:00.0"))
+                .severity("ERROR")
+                .build());
+        logcoreEntities.add(LogcoreEntity.builder()
+                .projectId(1L)
+                .date(Utils.getTimestampFromString("2022-06-28 17:00:00.0"))
+                .severity("ERROR")
+                .build());
+        logcoreEntities.add(LogcoreEntity.builder()
+                .projectId(1L)
+                .date(Utils.getTimestampFromString("2022-06-27 17:00:00.0"))
+                .severity("ERROR")
+                .build());
+
+        return logcoreEntities;
     }
 
     public static List<ProjectDto> aValidProjectDtoList() {
@@ -103,6 +132,45 @@ public class FakeData {
                 .id(1L)
                 .name("test1")
                 .description("test desc1")
+                .build();
+    }
+
+    public static PaginatedLogDto aValidPaginatedLogDto() {
+        List<LogcoreDto> logcoreDtos = new ArrayList<>();
+        logcoreDtos.add(LogcoreDto.builder()
+                .projectId(1L)
+                .date("2022-06-30 17:00:00.0")
+                .severity("ERROR")
+                .build());
+        logcoreDtos.add(LogcoreDto.builder()
+                .projectId(1L)
+                .date("2022-06-29 17:00:00.0")
+                .severity("ERROR")
+                .build());
+        logcoreDtos.add(LogcoreDto.builder()
+                .projectId(1L)
+                .date("2022-06-28 17:00:00.0")
+                .severity("ERROR")
+                .build());
+        logcoreDtos.add(LogcoreDto.builder()
+                .projectId(1L)
+                .date("2022-06-27 17:00:00.0")
+                .severity("ERROR")
+                .build());
+
+        return PaginatedLogDto.builder()
+                .size(4)
+                .currentPage(0)
+                .totalPages(1)
+                .totalElements(4)
+                .logs(logcoreDtos)
+                .build();
+    }
+
+    public static PaginatedLogRequest aValidPaginatedLogRequest() {
+        return PaginatedLogRequest.builder()
+                .projectId(1L)
+                .page(0)
                 .build();
     }
 

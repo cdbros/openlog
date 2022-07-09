@@ -134,6 +134,14 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GetAllLogs",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }

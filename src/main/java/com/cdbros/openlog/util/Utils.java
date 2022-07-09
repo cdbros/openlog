@@ -9,12 +9,14 @@ import java.util.Date;
 @Slf4j
 public class Utils {
 
+    public static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
     private Utils() {
     }
 
     public static Timestamp getTimestampFromString(String date) {
         try {
-            Date parsedDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").parse(date);
+            Date parsedDate = new SimpleDateFormat(DATE_PATTERN).parse(date);
             return new Timestamp(parsedDate.getTime());
         }
         catch (Exception e) {
