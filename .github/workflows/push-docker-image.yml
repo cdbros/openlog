@@ -33,10 +33,10 @@ jobs:
           password: ${{ secrets.GHCR_PAT }}
 
       - name: Build image and push to Docker Hub and GitHub Container Registry
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           context: .
-          tags: openlog:latest
+          tags: latest
           push: ${{ github.ref == 'refs/heads/master' }}
 
       - name: Image digest
