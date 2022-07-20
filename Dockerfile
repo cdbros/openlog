@@ -1,7 +1,7 @@
 FROM maven:3.8.6-jdk-11 AS maven
 
 COPY . .
-RUN pwd
+RUN pwd && ls -la
 RUN mvn clean install -DskipTests
 COPY target/*.jar openlog.jar
 
