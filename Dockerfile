@@ -4,8 +4,8 @@ COPY . /openlog
 RUN pwd && ls -la
 WORKDIR /openlog
 RUN mvn clean install -DskipTests
-RUN pwd && ls -la
-COPY target/*.jar openlog.jar
+RUN pwd && ls -la && ls -la ./target
+COPY ./target/*.jar openlog.jar
 
 FROM openjdk:11.0.11-jre-slim
 
