@@ -1,0 +1,9 @@
+HELP.md
+
+.mvn/wrapper
+mvnw
+mvnw.cmd
+doc/
+
+.git
+.gitignore
