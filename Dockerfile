@@ -6,5 +6,5 @@ RUN mvn clean install -DskipTests
 
 FROM openjdk:11.0.11-jre-slim
 
-COPY --from=maven /openlog/target/*.jar .
+COPY --from=maven /openlog/target/openlog.jar .
 ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=docker", "openlog.jar"]
