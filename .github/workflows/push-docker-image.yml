@@ -36,7 +36,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          tags: openlog:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openlog:latest
           push: ${{ github.ref == 'refs/heads/master' }}
 
       - name: Image digest
