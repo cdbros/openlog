@@ -6,16 +6,16 @@ import com.cdbros.openlog.util.FakeData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.io.IOException;
 
-@SpringBootTest
+@SpringBootTest(classes = {LogcoreRepository.class, LogcoreService.class})
 class LogcoreServiceTest {
 
-    @Mock
+    @MockBean
     private LogcoreRepository logcoreRepository;
 
     private LogcoreService logcoreService;

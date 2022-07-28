@@ -52,4 +52,40 @@ class StatisticControllerTest {
                         .param("projectId", ""))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    void shouldGetLastTwentyFourHoursErrors() throws Exception {
+
+        var aValidErrorStatsList = FakeData.aValidErrorStatsList();
+
+        Mockito.when(statisticService.getLastTwentyFourHoursErrors(1L, "2022-06-28 00:00:00.0"))
+                .thenReturn(aValidErrorStatsList);
+
+        mvc.perform(get("/openlog/api/v1/logs/lastErrors")
+                        .param("projectId", "1")
+                        .param("startDate", "2022-06-28 00:00:00.0"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.[0].time", is(1)))
+                .andExpect(jsonPath("$.[0].numberOfErrors", is(10)))
+                .andExpect(jsonPath("$.[1].time", is(2)))
+                .andExpect(jsonPath("$.[1].numberOfErrors", is(5)))
+                .andExpect(jsonPath("$.[2].time", is(3)))
+                .andExpect(jsonPath("$.[2].numberOfErrors", is(0)));
+    }
+
+    @Test
+    void shouldGetLastTwentyFourHoursErrorsWithBadRequest() throws Exception {
+        mvc.perform(get("/openlog/api/v1/logs/lastErrors")
+                        .param("projectId", "")
+                        .param("startDate", "2022-06-28 00:00:00.0"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void shouldGetLastTwentyFourHoursErrorsWithBadRequest2() throws Exception {
+        mvc.perform(get("/openlog/api/v1/logs/lastErrors")
+                        .param("projectId", "1")
+                        .param("startDate", (String) null))
+                .andExpect(status().isBadRequest());
+    }
 }

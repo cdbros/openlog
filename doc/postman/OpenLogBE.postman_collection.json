@@ -139,7 +139,73 @@
 			"name": "GetAllLogs",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{basePath}}/openlog/api/v1/logs?size=1&severity=error&projectId=1&orderBy=date",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"openlog",
+						"api",
+						"v1",
+						"logs"
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "1"
+						},
+						{
+							"key": "severity",
+							"value": "error"
+						},
+						{
+							"key": "projectId",
+							"value": "1"
+						},
+						{
+							"key": "orderBy",
+							"value": "date"
+						},
+						{
+							"key": "ascOrder",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLastTwentyFourHoursErrors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{basePath}}/openlog/api/v1/logs/lastErrors?projectId=1&from",
+					"host": [
+						"{{basePath}}"
+					],
+					"path": [
+						"openlog",
+						"api",
+						"v1",
+						"logs",
+						"lastErrors"
+					],
+					"query": [
+						{
+							"key": "projectId",
+							"value": "1"
+						},
+						{
+							"key": "from",
+							"value": null
+						}
+					]
+				}
 			},
 			"response": []
 		}

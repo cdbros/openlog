@@ -7,9 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public interface LogcoreRepository extends JpaRepository<LogcoreEntity, Long>, JpaSpecificationExecutor<LogcoreEntity> {
 
     Page<LogcoreEntity> findAll(Pageable pageable);
+
+    List<LogcoreEntity> findAll();
 }

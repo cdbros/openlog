@@ -4,6 +4,7 @@ import com.cdbros.openlog.feature.logcore.controller.dto.LogcoreDto;
 import com.cdbros.openlog.feature.logcore.controller.dto.PaginatedLogDto;
 import com.cdbros.openlog.feature.logcore.controller.dto.PaginatedLogRequest;
 import com.cdbros.openlog.feature.project.controller.dto.ProjectDto;
+import com.cdbros.openlog.feature.statistic.controller.dto.ErrorStatsDto;
 import com.cdbros.openlog.model.LogcoreEntity;
 import com.cdbros.openlog.model.ProjectEntity;
 import org.apache.commons.io.IOUtils;
@@ -95,6 +96,32 @@ public class FakeData {
         return logcoreEntities;
     }
 
+    public static List<LogcoreEntity> aValidLogcoreEntityListTwo() {
+        List<LogcoreEntity> logcoreEntities = new ArrayList<>();
+        logcoreEntities.add(LogcoreEntity.builder()
+                .projectId(1L)
+                .date(Utils.getTimestampFromString("2022-06-29 15:00:00.0"))
+                .severity("ERROR")
+                .build());
+        logcoreEntities.add(LogcoreEntity.builder()
+                .projectId(1L)
+                .date(Utils.getTimestampFromString("2022-06-29 15:20:00.0"))
+                .severity("ERROR")
+                .build());
+        logcoreEntities.add(LogcoreEntity.builder()
+                .projectId(1L)
+                .date(Utils.getTimestampFromString("2022-06-28 16:00:00.0"))
+                .severity("ERROR")
+                .build());
+        logcoreEntities.add(LogcoreEntity.builder()
+                .projectId(1L)
+                .date(Utils.getTimestampFromString("2022-06-29 17:00:00.0"))
+                .severity("ERROR")
+                .build());
+
+        return logcoreEntities;
+    }
+
     public static List<ProjectDto> aValidProjectDtoList() {
         List<ProjectDto> projectDtoList = new ArrayList<>();
         projectDtoList.add(ProjectDto.builder()
@@ -172,6 +199,126 @@ public class FakeData {
                 .projectId(1L)
                 .page(0)
                 .build();
+    }
+
+    public static List<ErrorStatsDto> aValidErrorStatsList() {
+        List<ErrorStatsDto> errorStatsDtos = new ArrayList<>();
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(1)
+                .numberOfErrors(10)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(2)
+                .numberOfErrors(5)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(3)
+                .numberOfErrors(0)
+                .build());
+
+        return errorStatsDtos;
+    }
+
+    public static List<ErrorStatsDto> aValidErrorStatsListTwo() {
+        List<ErrorStatsDto> errorStatsDtos = new ArrayList<>();
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(1)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(2)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(3)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(4)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(5)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(6)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(7)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(8)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(9)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(10)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(11)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(12)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(13)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(14)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(15)
+                .numberOfErrors(2)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(16)
+                .numberOfErrors(1)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(17)
+                .numberOfErrors(1)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(18)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(19)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(20)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(21)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(22)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(23)
+                .numberOfErrors(0)
+                .build());
+        errorStatsDtos.add(ErrorStatsDto.builder()
+                .time(24)
+                .numberOfErrors(0)
+                .build());
+
+        return errorStatsDtos;
     }
 
 }

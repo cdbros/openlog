@@ -7,20 +7,21 @@ import com.cdbros.openlog.util.FakeData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 
-@SpringBootTest
+@SpringBootTest(classes = {LogcoreRepository.class, LogcoreSpecification.class, StatisticService.class})
 class StatisticServiceTest {
 
-    @Mock
+    @MockBean
     private LogcoreRepository logcoreRepository;
 
-    @Mock
+    @MockBean
     private LogcoreSpecification logcoreSpecification;
 
     private StatisticService statisticService;
@@ -41,5 +42,16 @@ class StatisticServiceTest {
                 .thenReturn(logcoreEntities);
 
         Assertions.assertEquals(statisticService.getAllLogs(aValidPaginatedLogRequest), aValidPaginatedLogDto);
+    }
+
+    @Test
+    void shouldGetLastTwentyFourHoursErrors() {
+        var aValidLogcoreEntityList = FakeData.aValidLogcoreEntityListTwo();
+        var aValidErrorStatsList = FakeData.aValidErrorStatsListTwo();
+        Specification<LogcoreEntity> logSpecification = logcoreSpecification.getLastTwentyFourHoursErrors(1L, "2022-06-30 00:00:00.0");
+
+        Mockito.when(logcoreRepository.findAll(logSpecification)).thenReturn(aValidLogcoreEntityList);
+
+        Assertions.assertEquals(statisticService.getLastTwentyFourHoursErrors(1L, "2022-06-30 00:00:00.0"), aValidErrorStatsList);
     }
 }

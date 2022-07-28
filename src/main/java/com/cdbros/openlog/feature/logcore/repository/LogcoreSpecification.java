@@ -10,6 +10,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.sql.Timestamp;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,21 @@ public class LogcoreSpecification {
             else if (logRequest.getTo() != null) {
                 predicates.add(cb.lessThanOrEqualTo(root.get("date"), Utils.getTimestampFromString(logRequest.getTo())));
             }
+
+            return cb.and(predicates.toArray(new Predicate[0]));
+        };
+    }
+
+    public Specification<LogcoreEntity> getLastTwentyFourHoursErrors(Long projectId, String start) {
+        return (Root<LogcoreEntity> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+            List<Predicate> predicates = new ArrayList<>();
+            predicates.add(cb.equal(cb.lower(root.get("projectId")), projectId));
+            predicates.add(cb.equal(cb.lower(root.get("severity")), "ERROR"));
+
+            Timestamp startDate = Utils.getTimestampFromString(start);
+            Timestamp endDate = Timestamp.from(startDate.toInstant().minus(1, ChronoUnit.DAYS));
+
+            predicates.add(cb.between(root.get("date"), endDate, startDate));
 
             return cb.and(predicates.toArray(new Predicate[0]));
         };

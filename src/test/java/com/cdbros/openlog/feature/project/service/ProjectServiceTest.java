@@ -7,14 +7,14 @@ import com.cdbros.openlog.util.FakeData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
-@SpringBootTest
+@SpringBootTest(classes = {ProjectRepository.class, ProjectService.class})
 class ProjectServiceTest {
 
-    @Mock
+    @MockBean
     private ProjectRepository projectRepository;
 
     private ProjectService projectService;
