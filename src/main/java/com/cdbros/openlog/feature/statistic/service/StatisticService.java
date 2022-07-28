@@ -39,8 +39,8 @@ public class StatisticService {
 
     public PaginatedLogDto getAllLogs(PaginatedLogRequest logRequest) {
         log.info("Getting paginated logs {}", logRequest.toString());
-        PageRequest pageRequest = buildPageRequest(logRequest);
 
+        PageRequest pageRequest = buildPageRequest(logRequest);
         Specification<LogcoreEntity> logSpecification = logcoreSpecification.filterLogs(logRequest);
         Page<LogcoreEntity> pages = logcoreRepository.findAll(logSpecification, pageRequest);
 
