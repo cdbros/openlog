@@ -37,7 +37,7 @@ class LogcoreControllerTest {
 
         mvc.perform(multipart("/openlog/api/v1/logcore/csv")
                         .file(fakeMultipart))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 
     @Test
@@ -60,7 +60,7 @@ class LogcoreControllerTest {
         mvc.perform(post("/openlog/api/v1/logcore")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(logcoreDtos)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 
     @Test

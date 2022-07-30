@@ -3,11 +3,9 @@ package com.cdbros.openlog.feature.logcore.controller;
 import com.cdbros.openlog.feature.logcore.controller.dto.LogcoreDto;
 import com.cdbros.openlog.feature.logcore.service.LogcoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
@@ -26,11 +24,13 @@ public class LogcoreController {
     }
 
     @PostMapping("/openlog/api/v1/logcore")
+    @ResponseStatus(HttpStatus.CREATED)
     void saveLogLines(@Valid @RequestBody List<LogcoreDto> logcoreDtos) {
         logcoreService.saveLogLines(logcoreDtos);
     }
 
     @PostMapping("/openlog/api/v1/logcore/csv")
+    @ResponseStatus(HttpStatus.CREATED)
     void uploadLogFile(@RequestParam("logfile") @NotNull MultipartFile logfile) {
         logcoreService.uploadCsvLogFile(logfile);
     }
