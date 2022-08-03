@@ -8,6 +8,7 @@ import java.util.Map;
 @Getter
 public abstract class RequestException extends RuntimeException {
 
+    private static final long serialVersionUID = -1433552020876093522L;
     private final String exceptionCode;
 
     protected final transient Map<String, Object> attributes;
